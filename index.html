@@ -9,8 +9,89 @@
 
 <body background="white">
 
-
+<div class="BA-topbg">
+<div class="BA-wrapper BA-top">
 <a herf="https://lovefighter.github.io/SDPGuild/"><img src="timeline_20171206_110347.jpg" width="156" height="107" border="0"></a>
+if( window.top != window ) window.top.location = "https://lovefighter.github.io/SDPGuild/";
+function showMainBookmark() {
+if('' != $('#BA-myfav').html()){
+if( ('none' == $('#BA-myfav').get(0).style.display) ) {
+$('#BA-myfav').show();
+}else{
+$('#BA-myfav').hide();
+}
+return;
+}
+$.ajax({
+url:'/ajax/bookmark_AJAX.php',
+success:function(rText){ $('#BA-myfav').html(rText);lines = rText.split("\n").length-1;width = Math.ceil(lines / 20)*200;$('#BA-myfav').css('width',width+'px');$('#BA-myfav').show(); },
+method:'GET'
+});
+}
+var mydata = '';
+if( BAHAID ) {
+mydata += '<div class="TOP-my">';
+mydata += '  <ul>';
+mydata += '    <li><a href="http://mailbox.gamer.com.tw/" class="topbtn5"></a></li>';
+mydata += '    <li><a id="topBar_guild" href="javascript:TOPBAR_show(\'guild\', \'topbtn4\',\' topbtn4now\')" class="topbtn4"></a></li>';
+mydata += '    <li><a id="topBar_api" href="javascript:TOPBAR_show(\'api\', \'topbtn3\',\' topbtn3now\')" class="topbtn3"></a></li>';
+mydata += '    <li><a id="topBar_forum" href="javascript:TOPBAR_show(\'forum\', \'topbtn2\',\' topbtn2now\')" class="topbtn2"></a></li>';
+mydata += '    <li><a href="http://home.gamer.com.tw/'+BAHAID+'"><img src="http://avatar2.bahamut.com.tw/avataruserpic/'+BAHAIDlow.substr(0,1) +'/'+BAHAIDlow.substr(1,1)+'/'+BAHAIDlow+'/'+BAHAIDlow+'_s.png?x=201512210901"></a></li>';
+mydata += '    <li><a id="topBar_more" href="javascript:TOPBAR_show(\'more\', \'topbtn1\',\' topbtn1now\')" class="topbtn1"></a></li>';
+mydata += '  </ul>';
+mydata += '</div>';
+mydata += '<p class="TOP-btn"><a href="javascript:TOPBAR_show(\'light_0\', \'topb1\',\' topb1now\')" id="topBar_light_0" class="topb1"></a><a href="javascript:TOPBAR_show(\'light_1\', \'topb2\',\' topb2now\')" id="topBar_light_1" class="topb2"></a><a href="javascript:TOPBAR_show(\'light_2\', \'topb3\',\' topb3now\')" id="topBar_light_2" class="topb3"></a></p>';
+mydata += '<div id="topBarMsg_more" style="display:none"></div>';
+mydata += '<div id="topBarMsg_guild" style="display:none"></div>';
+mydata += '<div id="topBarMsg_api" style="display:none"></div>';
+mydata += '<div id="topBarMsg_forum" style="display:none"></div>';
+mydata += '<div id="topBarMsg_light_0" style="display:none"></div>';
+mydata += '<div id="topBarMsg_light_1" style="display:none"></div>';
+mydata += '<div id="topBarMsg_light_2" style="display:none"></div>';
+}else{
+mydata += '<div class="TOP-my TOP-nologin"><a href="https://user.gamer.com.tw/login.php"><img src="http://i2.bahamut.com.tw/none.gif"></a>';
+mydata += '  <ul>';
+mydata += '    <li><a href="https://user.gamer.com.tw/login.php">我要登入</a></li>';
+mydata += '    <li><a href="https://user.gamer.com.tw/regS1.php">註冊</a></li>';
+mydata += '    <li><a id="topBar_more" href="javascript:TOPBAR_show(\'more\', \'topbtn1\', \' topbtn1now\')" class="topbtn1"></a></li>';
+mydata += '  </ul>';
+mydata += '</div>';
+mydata += '<div id="topBarMsg_more" style="display:none"></div>';
+}
+document.write(mydata);
+if( BAHAID ) {
+var nowc = new Array(' topb1now',' topb2now',' topb3now'); 
+NOTIFY_getnum(nowc);
+run30 = setInterval("NOTIFY_getnum()",60000);
+}
+function apply() {
+window.open("http://www.gamer.com.tw/apply.php","_blank","width=500,height=500,scrollbars=1");
+}
+</script>
+<form name="fSearch_acg" action="http://acg.gamer.com.tw/search.php" method="get" autocomplete="off" id="bhAcgSearch">
+<p class="TOP-search"><input type="text" name="kw" class="bh-typeahead"><a href="javascript:AcgTypeahead.submit();"><img src="http://i2.bahamut.com.tw/search_bg.png"></a></p>
+<div class="BA-shlist" style="position:relative; left:12px; z-index:1; width:365px; text-align:left; display:none;"></div>
+</form>
+<ul class="BA-menu">
+<li><a href="http://acg.gamer.com.tw/news.php?p=android">Android</a></li>
+<li><a href="http://acg.gamer.com.tw/news.php?p=ios">iOS</a></li>
+<li><a href="http://acg.gamer.com.tw/news.php?p=olg">線上遊戲</a></li>
+<li><a href="http://acg.gamer.com.tw/news.php?p=pc">PC單機</a></li>
+<li><a href="http://acg.gamer.com.tw/news.php?p=web">WEB</a></li>
+<li><a href="http://acg.gamer.com.tw/news.php?p=ps4">PS4</a></li>
+<li><a href="http://acg.gamer.com.tw/news.php?p=ps3">PS3</a></li>
+<li><a href="http://acg.gamer.com.tw/news.php?p=wiiu">Wii U</a></li>
+<li><a href="http://acg.gamer.com.tw/news.php?p=xbone">XboxOne</a></li>
+<li><a href="http://acg.gamer.com.tw/news.php?p=xbox360">Xbox360</a></li>
+<li><a href="http://acg.gamer.com.tw/news.php?p=3ds">3DS</a></li>
+<li><a href="http://acg.gamer.com.tw/news.php?p=psv">PSV</a></li>
+<li><a href="http://acg.gamer.com.tw/news.php?p=anime">動畫</a></li>
+<li><a href="http://acg.gamer.com.tw/news.php?p=comic">漫畫</a></li>
+<li><a href="http://acg.gamer.com.tw/news.php?p=novel">輕小說</a></li>
+<li class="more"><a href="http://acg.gamer.com.tw/more.php" title="更多平台"></a></li>
+</ul>
+</div><!--天結束-->
+</div>
 
 
 
